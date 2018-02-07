@@ -1,0 +1,61 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        FAQ
+        <small>Edit</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-warning">
+                <form [formGroup]="faqFrm" #faqForm="ngForm" (ngSubmit)="save()">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Question</label>
+                            <input class="form-control" type="text" formControlName="question">
+                            <div *ngIf="faqFrm.controls['question'].touched">
+                                <p class="form_error" *ngIf="faqFrm.controls['question'].hasError('requiredTrim')">You must enter question.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Answer</label>
+                            <textarea class="form-control" formControlName="answer" cols="45" rows="5"></textarea>
+                            <div *ngIf="faqFrm.controls['answer'].touched">
+                                <p class="form_error" *ngIf="faqFrm.controls['answer'].hasError('requiredTrim')">You must enter answer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <!-- <span class="asteriskField">*</span> -->
+                            <label>Status</label>
+                            <select class="form-control" formControlName="status">
+                                <option [value]="1">Active</option>
+                                <option [value]="2">Inactive</option>
+                            </select>
+                            <div *ngIf="faqFrm.controls['status'].touched">
+                                <p class="form_error" *ngIf="faqFrm.controls['status'].hasError('requiredTrim')">You must select status.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="button" [routerLink]="['/faq']" class="btn btn-default">Cancel</button>
+                        <button [disabled]="faqFrm.invalid || httpCall" type="submit" class="btn btn-info pull-right">
+                            <img *ngIf="httpCall" src="{{config.assetPath}}/img/loader/ajax-loader.gif" /> 
+                            <span *ngIf="!httpCall">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

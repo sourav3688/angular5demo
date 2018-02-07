@@ -1,0 +1,78 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Quiz
+        <small>Edit</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-warning">
+                <form [formGroup]="quizFrm" #quizForm="ngForm" (ngSubmit)="save()">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Question</label>
+                            <input class="form-control" type="text" formControlName="question">
+                            <div *ngIf="quizFrm.controls['question'].touched">
+                                <p class="form_error" *ngIf="quizFrm.controls['question'].hasError('requiredTrim')">You must enter question.</p>
+                            </div>
+                        </div>
+
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title">Answers</h3>
+                                <!-- tools box -->
+                                <div class="pull-right box-tools">
+                                    <button type="button" (click)="addAns({});" class="btn btn-info btn-sm" title="Add"><i class="fa fa-plus"></i></button>
+                                </div>
+                                <!-- /. tools -->
+                            </div>
+                            <div class="box-body" formArrayName="answers">
+                                <div *ngFor="let answr of quizFrm['controls']['answers']['controls']; let i=index" [formGroupName]="i">
+                                    <div class="col-sx-12">
+                                        <div class="form-group col-sm-7">
+                                            <input type="email" class="form-control" formControlName="ans" placeholder="Answer {{i+1}}">
+                                            <div *ngIf="quizFrm['controls']['answers']['controls'][i]['controls']['ans'].touched">
+                                                <p class="form_error" *ngIf="quizFrm['controls']['answers']['controls'][i]['controls']['ans'].hasError('requiredTrim')">You must enter answer.</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label><p-checkbox binary="true" formControlName="correct_answer" (onChange)="currectAnsUpdate(i, $event);"></p-checkbox> Correct Answer </label>
+                                        </div>
+                                        <div class="box-tools col-sm-1" *ngIf="quizFrm['controls']['answers']['controls'].length > 1">
+                                            <button type="button" (click)="removeAns(i)" class="btn btn-info btn-sm" title="Remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- <span class="asteriskField">*</span> -->
+                            <label>Status</label>
+                            <select class="form-control" formControlName="status">
+                                <option [value]="1">Active</option>
+                                <option [value]="2">Inactive</option>
+                            </select>
+                            <div *ngIf="quizFrm.controls['status'].touched">
+                                <p class="form_error" *ngIf="quizFrm.controls['status'].hasError('requiredTrim')">You must select status.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="button" [routerLink]="['/quiz']" class="btn btn-default">Cancel</button>
+                        <button [disabled]="quizFrm.invalid || httpCall" type="submit" class="btn btn-info pull-right">
+                            <img *ngIf="httpCall" src="{{config.assetPath}}/img/loader/ajax-loader.gif" /> 
+                            <span *ngIf="!httpCall">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

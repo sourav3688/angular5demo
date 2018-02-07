@@ -1,0 +1,91 @@
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle"></p-confirmDialog>
+<header class="main-header">
+  <!-- Logo -->
+  <a routerLink="/" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>Ommi</b>Seq</span>
+    <!-- logo for regular state and mobile devices -->
+    <!-- <span class="logo-lg"><b>Ommi</b>Seq</span> -->
+    <span class="logo-lg"><img src="assets/logo_white.png" alt="OmmiSeq" style="width: 170px; margin-top: -10px;" /></span>
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top">
+    <!-- Sidebar toggle button-->
+    <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a> -->
+
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <!-- Notifications: style can be found in dropdown.less -->
+        <li class="dropdown notifications-menu" dropdown>
+          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">{{notifications.length}}</span>
+          </a>
+          <ul class="dropdown-menu" *dropdownMenu>
+            <li class="header" *ngIf="notifications.length > 0">You have {{notifications.length}} notification{{(notifications.length>1)?'s':''}}</li>
+            <li class="header" *ngIf="notifications.length == 0">No New Notifications</li>
+            <li>
+              <ul class="menu">
+                <li *ngIf="getNotificationByType('new_user');">
+                  <a routerLink="/appuser">
+                      <i class="fa fa-users text-aqua"></i> {{getNotificationByType('new_user').count}} new member needs your approval.
+                  </a>
+                </li>
+                <li *ngIf="getNotificationByType('new_query');">
+                  <a routerLink="/query">
+                      <i class="fa fa-question-circle-o text-yellow"></i> {{getNotificationByType('new_query').count}} new question not replied yet.
+                  </a>
+                </li>
+                <!--<li>
+                  <a href="javascript:void(0)">
+                      <i class="fa fa-users text-red"></i> 5 new members joined
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">
+                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">
+                      <i class="fa fa-user text-red"></i> You changed your username
+                  </a>
+                </li> -->
+              </ul>
+            </li>
+            <!-- <li class="footer"><a href="javascript:void(0)">View all</a></li> -->
+          </ul>
+        </li>
+        <li class="dropdown user user-menu" dropdown>
+          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>
+            <span class="hidden-xs">{{user.name}}</span>
+          </a>
+          <ul class="dropdown-menu" *dropdownMenu>
+            <li class="user-header">
+              <p>
+                {{user.name}}
+                <small>Welcome to Admin Portal</small>
+              </p>
+            </li>
+            <li class="user-footer">
+               <div class="pull-left">
+                <a [routerLink]="['/profile']" class="btn btn-default btn-flat">Profile</a>
+              </div> 
+              <div class="pull-right">
+                <a [routerLink]="['/user/updatepassword']" class="btn btn-default btn-flat">Update Password</a>
+              </div>
+              <!--<div class="pull-right">
+                <a href="javascript:void(0)" (click)="logout();" class="btn btn-default btn-flat">Sign out</a>
+              </div>-->
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown notifications-menu" dropdown>
+          <a href="javascript:void(0)" (click)="logout();"><i class="fa fa-power-off"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

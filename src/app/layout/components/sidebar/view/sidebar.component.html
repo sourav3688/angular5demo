@@ -1,0 +1,38 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel text-center info" style="background: #3c8dbc; color: #fff;">
+      <p>{{user.name}}<br>Welcome to Admin Portal</p>
+    </div>
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header" style="color:#fff;">OmniSeq Menu</li>
+      <li routerLinkActive="active">
+        <a routerLink="/dashboard">
+             <i class="fa fa-dashboard"></i>  
+            <span>Dashboard</span>
+          </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/faq">
+             <i class="fa"><img src="assets/img/icons/faq.svg"></i>  
+            <span>Manage FAQ’s</span>
+          </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/quiz">
+             <i class="fa"><img src="assets/img/icons/quiz.svg"></i>  
+            <span>Manage Quiz</span>
+          </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/settings">
+           <i class="fa fa-cogs"></i>  
+          <span>Settings</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>
