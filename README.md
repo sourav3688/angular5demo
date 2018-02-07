@@ -10,6 +10,11 @@ Run `npm install` from inside of the folder.
 
 Run `npm start` for a start server. once it is ready navigate to `http://localhost:4200/`.
 
+## Demo login details
+
+User: super_admin@yopmail.com
+Password: Password@1234
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
