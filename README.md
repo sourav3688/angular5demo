@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
+## Install dependencies
+
+Run `npm install` from inside of the folder.
+
 ## Start server
 
 Run `npm start` for a start server. once it is ready navigate to `http://localhost:4200/`.
