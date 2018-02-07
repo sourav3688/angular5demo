@@ -8,7 +8,7 @@ Run `npm install` from inside of the folder.
 
 ## Start server
 
-Run `npm start` for a start server. once it is ready navigate to `http://localhost:4200/`.
+Run `npm start` for start the server. once it is ready navigate to `http://localhost:4200/`.
 
 ## Demo login details
 
